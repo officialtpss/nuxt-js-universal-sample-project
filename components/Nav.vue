@@ -9,9 +9,9 @@
             <b-nav-item to="/home" exact-active-class="active">Home</b-nav-item>
             <b-nav-item to="/posts" exact-active-class="active">Posts</b-nav-item>
             <b-nav-item to="/users" active-class="active">Users</b-nav-item>
-            <b-nav-item to="/login" v-if="!$store.$storage.getUniversal('_login')" active-class="active">Login</b-nav-item>
+            <b-nav-item to="/login" v-if="!$store.$storage.getUniversal('_login') && !$store.state.firstName" active-class="active">Login</b-nav-item>
           </b-navbar-nav>
-          <b-nav-item-dropdown right v-if="$store.$storage.getUniversal('_login')">
+          <b-nav-item-dropdown right v-if="$store.$storage.getUniversal('_login') && $store.state.firstName">
             <template v-slot:button-content>
               <em>{{$store.state.firstName}}</em>
             </template>
